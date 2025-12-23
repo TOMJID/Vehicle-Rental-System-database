@@ -1,47 +1,47 @@
 -- Query 1: JOIN - Get all booking details with customer and vehicle info
 SELECT
-    B.BOOKING_ID,
-    U.NAME AS CUSTOMER_NAME,
-    V.NAME AS VEHICLE_NAME,
-    B.START_DATE,
-    B.END_DATE,
-    B.STATUS
+    B.booking_id,
+    U.name AS customer_name,
+    V.name AS vehicle_name,
+    B.start_date,
+    B.end_date,
+    B.status
 FROM
-    BOOKING AS B
-    JOIN USERS AS U ON B.U_ID = U.USER_ID
-    JOIN VEHICLES AS V ON B.V_ID = V.VEHICLE_ID;
+    booking AS B
+    JOIN users AS U ON B.u_id = U.user_id
+    JOIN vehicles AS V ON B.v_id = V.vehicle_id;
 
 -- Query 2: EXISTS - Find vehicles that have never been booked
 SELECT * FROM
-    VEHICLES V
+    vehicles AS V
 WHERE
     NOT EXISTS (
         SELECT 1 FROM
-            BOOKING B
+            booking AS B
         WHERE
-            B.V_ID = V.VEHICLE_ID
+            B.v_id = V.vehicle_id
     )
 ORDER BY
-    VEHICLE_ID ASC;
+    vehicle_id ASC;
 
 -- Query 3: WHERE - Get all available cars
 SELECT
     *
 FROM
-    VEHICLES
+    vehicles
 WHERE
     TYPE = 'car'
-    AND STATUS = 'available';
+    AND status = 'available';
 
 -- Query 4: GROUP BY & HAVING - Vehicles with more than 2 bookings
 SELECT
-    V.NAME AS VEHICLE_NAME,
-    COUNT(*) AS TOTAL_BOOKINGS
+    V.name AS vehicle_name ,
+    COUNT(*) AS total_bookings
 FROM
-    BOOKING AS B
-    JOIN VEHICLES AS V ON B.V_ID = V.VEHICLE_ID
+    booking AS B
+    JOIN vehicles AS V ON B.v_id = V.vehicle_id
 GROUP BY
-    B.V_ID,
-    V.NAME
+    B.v_id,
+    V.name
 HAVING
     COUNT(*) > 2;
