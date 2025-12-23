@@ -1,79 +1,63 @@
-<div align='center'>
+<div align="center">
   
-# Vehicle Rental System – Database Queries
+# Vehicle Rental System - Database Project
 
-</div>
+This is a database project for a **Vehicle Rental System** that allows customers to rent vehicles like cars, bikes, and trucks. The project demonstrates SQL query techniques to manage and retrieve data efficiently.
 
-<div align='center'> 
-  
-This document contains example SQL queries for a **Vehicle Rental System** database. 
-<br/>
-Each query addresses a specific real-world requirement using standard SQL techniques.
+
+---
+
+## Database Tables
+
+| Table Name | Description |
+|------------|-------------|
+| USERS | Stores customer information |
+| VEHICLES | Stores vehicle details (name, type, price, status) |
+| BOOKING | Stores rental booking records |
 
 </div>
 
 ---
 
+## SQL Queries Explanation
 
-## Query 1: JOIN  
+### Query 1: JOIN
+**Purpose:** Display all booking details with customer name and vehicle name.
 
-```sql
-SELECT
-    B.BOOKING_ID,
-    U.NAME AS CUSTOMER_NAME,
-    V.NAME AS VEHICLE_NAME,
-    B.START_DATE,
-    B.END_DATE,
-    B.STATUS
-FROM
-    BOOKING AS B
-    JOIN USERS AS U ON B.USER_ID = U.USER_ID
-    JOIN VEHICLES AS V ON B.VEHICLE_ID = V.VEHICLE_ID;
+**How it works:**
+- Combines data from BOOKING, USERS, and VEHICLES tables
+- Uses JOIN to link related records
+- Shows booking ID, customer name, vehicle name, dates, and status
 
-```
+---
 
-## Query 2: EXISTS
+### Query 2: NOT EXISTS
+**Purpose:** Find vehicles that have never been booked.
 
-```sql
-SELECT * FROM
-    VEHICLES V
-WHERE
-    NOT EXISTS (
-        SELECT 1 FROM
-            BOOKING B
-        WHERE
-            B.VEHICLE_ID = V.VEHICLE_ID
-    )
-ORDER BY
-    VEHICLE_ID ASC;
-```
-## Query 3: WHERE
-```sql
-SELECT
-    *
-FROM
-    VEHICLES
-WHERE
-    TYPE = 'car'
-    AND STATUS = 'available';
-```
+**How it works:**
+- Checks each vehicle against the BOOKING table
+- Returns vehicles with no matching booking records
+- Useful for identifying unused inventory
 
-## Query 4: GROUP BY & HAVING
-```sql
-SELECT
-    V.NAME AS VEHICLE_NAME,
-    COUNT(*) AS TOTAL_BOOKINGS
-FROM
-    BOOKING AS B
-    JOIN VEHICLES AS V ON B.VEHICLE_ID = V.VEHICLE_ID
-GROUP BY
-    B.VEHICLE_ID,
-    V.NAME
-HAVING
-    COUNT(*) > 2;
-```
+---
+
+### Query 3: WHERE
+**Purpose:** Find all available cars for rental.
+
+**How it works:**
+- Filters VEHICLES table using two conditions
+- TYPE must be 'car' AND STATUS must be 'available'
+- Shows only cars ready for booking
+
+---
+
+### Query 4: GROUP BY & HAVING
+**Purpose:** Find popular vehicles with more than 2 bookings.
+
+**How it works:**
+- Groups bookings by vehicle
+- Counts total bookings per vehicle
+- HAVING filters only vehicles with count > 2
 
 
-
-
-
+<div align='center'> > - Tomjid - < </div>
