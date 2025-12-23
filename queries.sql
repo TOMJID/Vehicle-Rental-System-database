@@ -1,13 +1,3 @@
-
----
-
-## 📁 File: queries.sql
-
-```sql
--- ============================================
--- Vehicle Rental System - SQL Queries
--- ============================================
-
 -- Query 1: JOIN - Get all booking details with customer and vehicle info
 SELECT
     B.BOOKING_ID,
