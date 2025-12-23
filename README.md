@@ -1,8 +1,10 @@
+<div align='center'>
+  
 # Vehicle Rental System - Database Project
 
-## Project Overview
-
 This is a database project for a **Vehicle Rental System** that allows customers to rent vehicles like cars, bikes, and trucks. The system manages users, vehicles, and bookings efficiently. The project demonstrates SQL query techniques including **JOIN**, **EXISTS**, **WHERE**, **GROUP BY**, and **HAVING** to manage and retrieve data effectively.
+
+</div>
 
 ---
 
@@ -13,7 +15,7 @@ This is a database project for a **Vehicle Rental System** that allows customers
 
 | Table Name | Description |
 |------------|-------------|
-| **users** | Stores customer information (name, email, phone, role) |
+| **users** | Stores customer information (name, email, phone, password, role) |
 | **vehicles** | Stores vehicle details (name, type, model, price, status) |
 | **booking** | Stores rental booking records (user, vehicle, dates, cost) |
 
@@ -42,6 +44,7 @@ This is a database project for a **Vehicle Rental System** that allows customers
 
 ## Queries Explanation
 
+
 ### Query 1: JOIN
 
 **Purpose:** Display all booking details with customer name and vehicle name.
@@ -51,6 +54,7 @@ This is a database project for a **Vehicle Rental System** that allows customers
 - Uses JOIN to link related records
 - Shows booking ID, customer name, vehicle name, dates, and status
 
+---
 
 ### Query 2: NOT EXISTS
 Purpose: Find vehicles that have never been booked.
@@ -63,7 +67,7 @@ Purpose: Find vehicles that have never been booked.
 ---
 
 ### Query 3: WHERE
-Purpose: Find all available cars for rental.
+Purpose: Retrieve all available vehicles of a specific type (like cars.) or some thing else.
 
 **How it works:**
 - Filters vehicles table using two conditions
@@ -73,7 +77,7 @@ Purpose: Find all available cars for rental.
 ---
 
 ### Query 4: GROUP BY & HAVING
-Purpose: Find popular vehicles with more than 2 bookings.
+Purpose: Find the total number of bookings for each vehicle and display only those vehicles that have more than 2 bookings.
 
 **How it works:**
 - Groups bookings by vehicle
