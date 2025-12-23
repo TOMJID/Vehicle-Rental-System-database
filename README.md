@@ -4,10 +4,9 @@
 
 This is a database project for a **Vehicle Rental System** that allows customers to rent vehicles like cars, bikes, and trucks. The project demonstrates SQL query techniques to manage and retrieve data efficiently.
 
-
----
-
-## Database Tables
+<h1>
+Database Tables  
+</h1> 
 
 | Table Name | Description |
 |------------|-------------|
@@ -15,11 +14,12 @@ This is a database project for a **Vehicle Rental System** that allows customers
 | VEHICLES | Stores vehicle details (name, type, price, status) |
 | BOOKING | Stores rental booking records |
 
-</div>
-
 ---
 
-## SQL Queries Explanation
+</div>
+
+## Queries Explanation
+
 
 ### Query 1: JOIN
 **Purpose:** Display all booking details with customer name and vehicle name.
@@ -59,5 +59,6 @@ This is a database project for a **Vehicle Rental System** that allows customers
 - Counts total bookings per vehicle
 - HAVING filters only vehicles with count > 2
 
+---
 
 <div align='center'> > - Tomjid - < </div>
